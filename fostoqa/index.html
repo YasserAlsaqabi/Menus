@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>فستقة · المنيو</title>
+<style>
+@font-face{font-family:Cairo;src:url(../fonts/Cairo-Variable.ttf) format("truetype");font-weight:200 1000;font-display:swap}
+/* VOICE: ناعم وشهي، عينة قصيرة لمحل حلويات اسمه فستقة
+   IDEA: صحن كنافة بالفستق ينشاف من فوق
+   PICTURE: صحن دائري بقشرة ذهبية ووجه فستق مطحون، يتوسط الرأس
+   COLOUR and TYPE: فستقي غامق غالب، كريمي مساند، وردي فستق للزر؛ خط Cairo
+   LAYOUT: عمود واحد للجوال، قسم واحد بأربعة أصناف، زر طلب واتساب ثابت */
+:root{color-scheme:light dark;
+--bg:light-dark(#fbf6f1,#1d1411);--card:light-dark(#ffffff,#2a1d18);--ink:light-dark(#2a1712,#f6ece6);
+--mut:light-dark(#7a645b,#bfa99f);--main:#5d7a2c;--main2:#3b5119;--acc:#b5546b;--line:light-dark(#efe3da,#3a2a23)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Cairo,Tahoma,sans-serif;overflow-x:clip;padding-bottom:120px}
+.wrap{max-width:520px;margin:0 auto}
+header{background:radial-gradient(120% 90% at 50% 0%,var(--main),var(--main2));color:#fff;text-align:center;padding:30px 18px 0;position:relative}
+.kicker{font-size:14px;font-weight:600;opacity:.85;margin:0}
+header h1{margin:2px 0 0;font-size:44px;font-weight:800;line-height:1.05;letter-spacing:0}
+.meta{margin:10px 0 0;font-size:14px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.meta span{background:rgba(255,255,255,.14);border-radius:99px;padding:3px 12px;font-weight:600}
+.tray{display:block;width:250px;height:250px;margin:18px auto -110px;filter:drop-shadow(0 18px 22px rgba(60,15,5,.35));position:relative;z-index:1}
+.note{background:#fff3c9;color:#5a4300;font-size:13px;text-align:center;padding:8px 14px;margin:126px 16px 0;border-radius:12px}
+h2{font-size:22px;margin:22px 16px 4px;font-weight:800}
+.lead{margin:0 16px 14px;color:var(--mut);font-size:15px}
+.item{background:var(--card);margin:0 16px 10px;padding:14px;border-radius:16px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;border:1px solid var(--line)}
+.item b{display:block;font-size:17px;line-height:1.3}
+.item small{display:block;color:var(--mut);font-size:13px;line-height:1.45;margin-top:3px}
+.tag{font-size:11px;color:var(--mut);border:1px solid var(--line);border-radius:6px;padding:0 6px;margin-inline-start:4px;font-weight:600;vertical-align:middle}
+.side{display:flex;gap:10px;align-items:center}
+.price{font-weight:800;white-space:nowrap;font-size:16px}
+.add{width:44px;height:44px;border-radius:12px;border:0;background:var(--acc);color:#fff;font:800 22px Cairo,sans-serif;cursor:pointer;position:relative}
+.sub{width:44px;height:44px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font:800 22px Cairo,sans-serif;cursor:pointer}
+.sub[hidden]{display:none}
+.add .n{position:absolute;top:-6px;left:-6px;background:var(--main);color:#fff;border-radius:99px;font-size:12px;min-width:20px;height:20px;line-height:20px;padding:0 4px}
+.add .n:empty{display:none}
+.add:focus-visible,.sub:focus-visible,.cta a:focus-visible,.clr:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.foot{text-align:center;color:var(--mut);font-size:13px;padding:14px 16px}
+.cta{position:fixed;inset-inline:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:color-mix(in srgb,var(--bg) 94%,transparent);border-top:1px solid var(--line);z-index:3}
+.sum{max-width:488px;margin:0 auto 6px;font-size:13px;color:var(--mut);display:flex;justify-content:space-between}
+.clr{background:none;border:0;color:var(--main);font:600 13px Cairo,sans-serif;cursor:pointer;padding:0}
+.cta a{display:flex;align-items:center;justify-content:center;gap:10px;max-width:488px;margin:0 auto;background:#1f9d55;color:#fff;text-decoration:none;font-weight:800;font-size:18px;padding:14px;border-radius:16px}
+.cta svg{width:22px;height:22px}
+@media (prefers-reduced-motion:no-preference){.steam{animation:rise 3s ease-in-out infinite}.steam:nth-of-type(2){animation-delay:1s}}
+@keyframes rise{0%{opacity:0;transform:translateY(6px)}40%{opacity:.7}100%{opacity:0;transform:translateY(-10px)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <p class="kicker">حلويات بالفستق، طازجة كل يوم</p>
+  <h1>فستقة</h1>
+  <div class="meta"><span>حي وهطان، بريدة</span><span>★ 4.5 من 229 تقييم</span></div>
+  <svg class="tray" viewBox="0 0 250 250" aria-hidden="true">
+    <defs>
+      <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbf7ef"/><stop offset=".5" stop-color="#ddd3c2"/><stop offset="1" stop-color="#f4eee3"/></linearGradient>
+      <radialGradient id="crust" cx="50%" cy="50%" r="55%"><stop offset=".7" stop-color="#e9a64a"/><stop offset="1" stop-color="#b8661f"/></radialGradient>
+      <radialGradient id="pist" cx="45%" cy="40%" r="60%"><stop offset="0" stop-color="#b9d877"/><stop offset=".7" stop-color="#8fb24b"/><stop offset="1" stop-color="#6d8e33"/></radialGradient>
+    </defs>
+    <circle cx="125" cy="128" r="112" fill="url(#rim)"/>
+    <circle cx="125" cy="128" r="98" fill="url(#crust)"/>
+    <g stroke="#c77d2c" stroke-width="2" opacity=".6" fill="none"><circle cx="125" cy="128" r="92" stroke-dasharray="3 5"/></g>
+    <circle cx="125" cy="128" r="80" fill="url(#pist)"/>
+    <g fill="#5f7f2a"><circle cx="100" cy="100" r="3"/><circle cx="150" cy="96" r="2.5"/><circle cx="160" cy="140" r="3"/><circle cx="96" cy="150" r="2.5"/><circle cx="125" cy="170" r="3"/><circle cx="140" cy="118" r="2"/><circle cx="112" cy="128" r="2"/><circle cx="82" cy="124" r="2.5"/><circle cx="172" cy="116" r="2"/></g>
+    <g fill="#d6e9a6"><circle cx="118" cy="92" r="2.5"/><circle cx="138" cy="152" r="2.5"/><circle cx="90" cy="134" r="2"/><circle cx="164" cy="128" r="2"/><circle cx="128" cy="110" r="2"/></g>
+    <g><ellipse cx="118" cy="124" rx="11" ry="7" fill="#c3dd85" stroke="#6d8e33" stroke-width="1.5" transform="rotate(-30 118 124)"/><ellipse cx="134" cy="132" rx="11" ry="7" fill="#c3dd85" stroke="#6d8e33" stroke-width="1.5" transform="rotate(20 134 132)"/><ellipse cx="124" cy="143" rx="10" ry="6.5" fill="#b5d36f" stroke="#6d8e33" stroke-width="1.5" transform="rotate(-70 124 143)"/></g>
+    <ellipse cx="92" cy="80" rx="30" ry="8" fill="#fff" opacity=".22" transform="rotate(-25 92 80)"/>
+  </svg>
+</header>
+
+<p class="note">عينة: الأصناف والأسعار أمثلة (نموذج)، وتتغيّر لأصنافكم وأسعاركم.</p>
+
+<h2>حلا الفستق</h2>
+<p class="lead">تنسوى يومياً، وتوصلكم طازجة.</p>
+<main id="menu"></main>
+<p class="foot">اختر اللي تبيه، ويوصلنا طلبك على الواتساب</p>
+</div>
+
+<div class="cta">
+  <div class="sum"><span id="sum">ما اخترت شي للحين</span><button class="clr" id="clr" type="button" hidden>مسح الطلب</button></div>
+  <a id="wa" href="https://wa.me/966507714271">
+    <svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.2.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3Z"/></svg>
+    <span id="waTxt">اطلب على الواتساب</span>
+  </a>
+</div>
+
+<script>
+{
+const PHONE='966507714271';
+const ITEMS=[
+ {n:'كنافة بالفستق',d:'صحن وسط، بقشطة وفستق مطحون',p:30},
+ {n:'تشيز كيك فستق',d:'قطعة، بصوص الفستق',p:22},
+ {n:'كيكة فستق',d:'كيكة كاملة لـ 8 أشخاص',p:95},
+ {n:'بوكس حلا الفستق',d:'تشكيلة لـ 4 أشخاص',p:70}
+];
+const cart={};
+const menu=document.getElementById('menu');
+menu.innerHTML=ITEMS.map((it,i)=>`<div class="item">
+ <div><b>${it.n} <span class="tag">نموذج</span></b><small>${it.d}</small></div>
+ <div class="side"><span class="price">${it.p} ر.س</span><button class="sub" type="button" data-k="${i}" aria-label="نقّص ${it.n}" hidden>−</button><button class="add" type="button" data-k="${i}" aria-label="أضف ${it.n}">+<span class="n"></span></button></div></div>`).join('');
+function render(){
+  let count=0,total=0,lines=[];
+  for(const k in cart){const it=ITEMS[k],q=cart[k];count+=q;total+=q*it.p;lines.push(`${q} × ${it.n}`);}
+  document.querySelectorAll('.add').forEach(b=>b.querySelector('.n').textContent=cart[b.dataset.k]||'');
+  document.querySelectorAll('.sub').forEach(b=>b.hidden=!cart[b.dataset.k]);
+  document.getElementById('sum').textContent=count?`${count} صنف · ${total} ر.س (نموذج)`:'ما اخترت شي للحين';
+  document.getElementById('clr').hidden=!count;
+  document.getElementById('waTxt').textContent=count?'أرسل الطلب على الواتساب':'اطلب على الواتساب';
+  const msg=count?`السلام عليكم، أبي أطلب من فستقة:\n${lines.join('\n')}\nالمجموع: ${total} ر.س`:'السلام عليكم، أبي أطلب من فستقة';
+  document.getElementById('wa').href=`https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`;
+}
+menu.addEventListener('click',e=>{
+  const a=e.target.closest('.add'),m=e.target.closest('.sub');
+  if(a){cart[a.dataset.k]=(cart[a.dataset.k]||0)+1;render();}
+  else if(m&&cart[m.dataset.k]){if(--cart[m.dataset.k]<=0)delete cart[m.dataset.k];render();}
+});
+document.getElementById('clr').addEventListener('click',()=>{for(const k in cart)delete cart[k];render();});
+render();
+}
+</script>
+</body>
+</html>
