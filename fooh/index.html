@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>فوح الأرز · المنيو</title>
+<style>
+@font-face{font-family:Cairo;src:url(../fonts/Cairo-Variable.ttf) format("truetype");font-weight:200 1000;font-display:swap}
+/* VOICE: كريم ومشبع، عينة قصيرة لمطعم ومطبخ رز
+   IDEA: صحن رز كبير على السفرة، ينشاف من فوق
+   PICTURE: صحن دائري فيه رز مزعفر ودجاج ومكسرات، يتوسط الرأس
+   COLOUR and TYPE: بني قرفة غامق غالب، أخضر هيل للزر؛ خط Cairo
+   LAYOUT: عمود واحد للجوال، قسم واحد بأربعة أصناف، زر طلب واتساب ثابت */
+:root{color-scheme:light dark;
+--bg:light-dark(#fbf6f1,#1d1411);--card:light-dark(#ffffff,#2a1d18);--ink:light-dark(#2a1712,#f6ece6);
+--mut:light-dark(#7a645b,#bfa99f);--main:#8a3b12;--main2:#5a240a;--acc:#2f7d4f;--line:light-dark(#efe3da,#3a2a23)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Cairo,Tahoma,sans-serif;overflow-x:clip;padding-bottom:120px}
+.wrap{max-width:520px;margin:0 auto}
+header{background:radial-gradient(120% 90% at 50% 0%,var(--main),var(--main2));color:#fff;text-align:center;padding:30px 18px 0;position:relative}
+.kicker{font-size:14px;font-weight:600;opacity:.85;margin:0}
+header h1{margin:2px 0 0;font-size:44px;font-weight:800;line-height:1.05;letter-spacing:0}
+.meta{margin:10px 0 0;font-size:14px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.meta span{background:rgba(255,255,255,.14);border-radius:99px;padding:3px 12px;font-weight:600}
+.tray{display:block;width:250px;height:250px;margin:18px auto -110px;filter:drop-shadow(0 18px 22px rgba(60,15,5,.35));position:relative;z-index:1}
+.note{background:#fff3c9;color:#5a4300;font-size:13px;text-align:center;padding:8px 14px;margin:126px 16px 0;border-radius:12px}
+h2{font-size:22px;margin:22px 16px 4px;font-weight:800}
+.lead{margin:0 16px 14px;color:var(--mut);font-size:15px}
+.item{background:var(--card);margin:0 16px 10px;padding:14px;border-radius:16px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;border:1px solid var(--line)}
+.item b{display:block;font-size:17px;line-height:1.3}
+.item small{display:block;color:var(--mut);font-size:13px;line-height:1.45;margin-top:3px}
+.tag{font-size:11px;color:var(--mut);border:1px solid var(--line);border-radius:6px;padding:0 6px;margin-inline-start:4px;font-weight:600;vertical-align:middle}
+.side{display:flex;gap:10px;align-items:center}
+.price{font-weight:800;white-space:nowrap;font-size:16px}
+.add{width:44px;height:44px;border-radius:12px;border:0;background:var(--acc);color:#fff;font:800 22px Cairo,sans-serif;cursor:pointer;position:relative}
+.sub{width:44px;height:44px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font:800 22px Cairo,sans-serif;cursor:pointer}
+.sub[hidden]{display:none}
+.add .n{position:absolute;top:-6px;left:-6px;background:var(--main);color:#fff;border-radius:99px;font-size:12px;min-width:20px;height:20px;line-height:20px;padding:0 4px}
+.add .n:empty{display:none}
+.add:focus-visible,.sub:focus-visible,.cta a:focus-visible,.clr:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.foot{text-align:center;color:var(--mut);font-size:13px;padding:14px 16px}
+.cta{position:fixed;inset-inline:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:color-mix(in srgb,var(--bg) 94%,transparent);border-top:1px solid var(--line);z-index:3}
+.sum{max-width:488px;margin:0 auto 6px;font-size:13px;color:var(--mut);display:flex;justify-content:space-between}
+.clr{background:none;border:0;color:var(--main);font:600 13px Cairo,sans-serif;cursor:pointer;padding:0}
+.cta a{display:flex;align-items:center;justify-content:center;gap:10px;max-width:488px;margin:0 auto;background:#1f9d55;color:#fff;text-decoration:none;font-weight:800;font-size:18px;padding:14px;border-radius:16px}
+.cta svg{width:22px;height:22px}
+@media (prefers-reduced-motion:no-preference){.steam{animation:rise 3s ease-in-out infinite}.steam:nth-of-type(2){animation-delay:1s}}
+@keyframes rise{0%{opacity:0;transform:translateY(6px)}40%{opacity:.7}100%{opacity:0;transform:translateY(-10px)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <p class="kicker">مطعم ومطبخ، رز يفوح ريحه</p>
+  <h1>فوح الأرز</h1>
+  <div class="meta"><span>بريدة</span><span>★ 4.7 من 185 تقييم</span></div>
+  <svg class="tray" viewBox="0 0 250 250" aria-hidden="true">
+    <defs>
+      <radialGradient id="rice" cx="45%" cy="40%" r="60%"><stop offset="0" stop-color="#fbe3a2"/><stop offset=".6" stop-color="#efc061"/><stop offset="1" stop-color="#d79a2f"/></radialGradient>
+      <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f4f4"/><stop offset=".5" stop-color="#c2c2c2"/><stop offset="1" stop-color="#ebebeb"/></linearGradient>
+      <radialGradient id="chk" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#d98a3a"/><stop offset="1" stop-color="#8f4416"/></radialGradient>
+    </defs>
+    <path class="steam" d="M105 22q-8 -10 0 -20" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none" opacity=".6"/>
+    <path class="steam" d="M145 22q8 -10 0 -20" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none" opacity=".6"/>
+    <circle cx="125" cy="128" r="112" fill="url(#rim)"/>
+    <circle cx="125" cy="128" r="98" fill="#e7e2d8"/>
+    <circle cx="125" cy="130" r="90" fill="url(#rice)"/>
+    <g fill="#fff5da" opacity=".85">
+      <ellipse cx="70" cy="110" rx="5" ry="2" transform="rotate(20 70 110)"/><ellipse cx="82" cy="160" rx="5" ry="2" transform="rotate(-30 82 160)"/><ellipse cx="170" cy="168" rx="5" ry="2" transform="rotate(40 170 168)"/><ellipse cx="185" cy="100" rx="5" ry="2" transform="rotate(-15 185 100)"/><ellipse cx="120" cy="190" rx="5" ry="2" transform="rotate(10 120 190)"/><ellipse cx="96" cy="80" rx="5" ry="2" transform="rotate(-40 96 80)"/><ellipse cx="150" cy="76" rx="5" ry="2" transform="rotate(30 150 76)"/><ellipse cx="62" cy="138" rx="5" ry="2"/><ellipse cx="190" cy="140" rx="5" ry="2" transform="rotate(60 190 140)"/>
+    </g>
+    <path d="M92 118q8-34 44-30q36 6 30 40q-4 30-40 30q-40-4-34-40Z" fill="url(#chk)"/>
+    <path d="M104 110q14-14 34-8" stroke="#f1b06a" stroke-width="4" stroke-linecap="round" fill="none" opacity=".7"/>
+    <g fill="#f3e3c3"><ellipse cx="80" cy="96" rx="5" ry="3"/><ellipse cx="176" cy="150" rx="5" ry="3" transform="rotate(30 176 150)"/><ellipse cx="160" cy="92" rx="5" ry="3" transform="rotate(-20 160 92)"/></g>
+    <g fill="#5a2a14"><circle cx="88" cy="150" r="3.5"/><circle cx="150" cy="178" r="3.5"/><circle cx="180" cy="120" r="3.5"/><circle cx="72" cy="122" r="3"/></g>
+    <g fill="#4e8a3a"><path d="M150 112q10-8 16 2q-10 6-16-2Z"/><path d="M112 150q-8 8 0 14q6-8 0-14Z"/></g>
+    <ellipse cx="96" cy="74" rx="34" ry="9" fill="#fff" opacity=".2" transform="rotate(-25 96 74)"/>
+  </svg>
+</header>
+
+<p class="note">عينة: الأصناف والأسعار أمثلة (نموذج)، وتتغيّر لأصنافكم وأسعاركم.</p>
+
+<h2>أطباق الرز</h2>
+<p class="lead">تنطبخ يومياً، وتوصلكم حارة.</p>
+<main id="menu"></main>
+<p class="foot">اختر اللي تبيه، ويوصلنا طلبك على الواتساب</p>
+</div>
+
+<div class="cta">
+  <div class="sum"><span id="sum">ما اخترت شي للحين</span><button class="clr" id="clr" type="button" hidden>مسح الطلب</button></div>
+  <a id="wa" href="https://wa.me/966553076667">
+    <svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.2.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3Z"/></svg>
+    <span id="waTxt">اطلب على الواتساب</span>
+  </a>
+</div>
+
+<script>
+{
+const PHONE='966553076667';
+const ITEMS=[
+ {n:'رز بخاري بالدجاج',d:'نص دجاج مع رز بخاري',p:28},
+ {n:'مندي لحم',d:'لحم حاشي أو غنم مع رز مندي',p:48},
+ {n:'مضغوط دجاج',d:'نص دجاج مضغوط مع رز',p:30},
+ {n:'صحن عائلي',d:'لـ 4 إلى 5 أشخاص، مع سلطة',p:120}
+];
+const cart={};
+const menu=document.getElementById('menu');
+menu.innerHTML=ITEMS.map((it,i)=>`<div class="item">
+ <div><b>${it.n} <span class="tag">نموذج</span></b><small>${it.d}</small></div>
+ <div class="side"><span class="price">${it.p} ر.س</span><button class="sub" type="button" data-k="${i}" aria-label="نقّص ${it.n}" hidden>−</button><button class="add" type="button" data-k="${i}" aria-label="أضف ${it.n}">+<span class="n"></span></button></div></div>`).join('');
+function render(){
+  let count=0,total=0,lines=[];
+  for(const k in cart){const it=ITEMS[k],q=cart[k];count+=q;total+=q*it.p;lines.push(`${q} × ${it.n}`);}
+  document.querySelectorAll('.add').forEach(b=>b.querySelector('.n').textContent=cart[b.dataset.k]||'');
+  document.querySelectorAll('.sub').forEach(b=>b.hidden=!cart[b.dataset.k]);
+  document.getElementById('sum').textContent=count?`${count} صنف · ${total} ر.س (نموذج)`:'ما اخترت شي للحين';
+  document.getElementById('clr').hidden=!count;
+  document.getElementById('waTxt').textContent=count?'أرسل الطلب على الواتساب':'اطلب على الواتساب';
+  const msg=count?`السلام عليكم، أبي أطلب من فوح الأرز:\n${lines.join('\n')}\nالمجموع: ${total} ر.س`:'السلام عليكم، أبي أطلب من فوح الأرز';
+  document.getElementById('wa').href=`https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`;
+}
+menu.addEventListener('click',e=>{
+  const a=e.target.closest('.add'),m=e.target.closest('.sub');
+  if(a){cart[a.dataset.k]=(cart[a.dataset.k]||0)+1;render();}
+  else if(m&&cart[m.dataset.k]){if(--cart[m.dataset.k]<=0)delete cart[m.dataset.k];render();}
+});
+document.getElementById('clr').addEventListener('click',()=>{for(const k in cart)delete cart[k];render();});
+render();
+}
+</script>
+</body>
+</html>
